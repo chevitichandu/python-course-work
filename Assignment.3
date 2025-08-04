@@ -1,0 +1,135 @@
+
+#Build Your Own Quiz Game
+def get_questions():
+    return [
+        {
+            "question": "Which of these will create an empty dictionary in Python?",
+            "options": {"a": "[]", "b": "{}", "c": "dict()", "d": "()" },
+            "answer": "c"
+        },
+        {
+            "question": "How can you check if a key exists in a dictionary?",
+            "options": {"a": "key.exists()", "b": "key in dict", "c": "dict.has(key)", "d": "dict.contains(key)"},
+            "answer": "b"
+        },
+        {
+            "question": "What does the 'is' operator check?",
+            "options": {"a": "Value equality", "b": "Memory identity", "c": "Type match", "d": "Object length"},
+            "answer": "b"
+        },
+        {
+            "question": "Which of the following functions returns an iterable in Python 3?",
+            "options": {"a": "range()", "b": "xrange()", "c": "list()", "d": "slice()"},
+            "answer": "a"
+        },
+        {
+            "question": "What does the enumerate() function return?",
+            "options": {"a": "Index only", "b": "Values only", "c": "Tuple of index and value", "d": "List of items"},
+            "answer": "c"
+        },
+        {
+            "question": "What is the output of type(10/2)?",
+            "options": {"a": "<class 'int'>", "b": "<class 'float'>", "c": "<class 'str'>", "d": "Error"},
+            "answer": "b"
+        },
+        {
+            "question": "Which statement will correctly open a file for writing?",
+            "options": {"a": "open('file.txt', 'r')", "b": "open('file.txt', 'rw')", "c": "open('file.txt', 'w')", "d": "open('file.txt', 'x')"},
+            "answer": "c"
+        },
+        {
+            "question": "Which of these types is immutable?",
+            "options": {"a": "list", "b": "set", "c": "dict", "d": "str"},
+            "answer": "d"
+        },
+        {
+            "question": "Which function can be used to convert a list to a set?",
+            "options": {"a": "list()", "b": "tuple()", "c": "set()", "d": "dict()"},
+            "answer": "c"
+        },
+        {
+            "question": "How do you create a function with a default argument?",
+            "options": {"a": "def func(x = 1):", "b": "def func(x := 1):", "c": "def func(x == 1):", "d": "def func(x => 1):"},
+            "answer": "a"
+        },
+        {
+            "question": "Which of the following will reverse a list in-place?",
+            "options": {"a": "list.reverse()", "b": "reversed(list)", "c": "list[::-1]", "d": "list.sort(reverse=True)"},
+            "answer": "a"
+        },
+        {
+            "question": "Which of the following is used for error handling in Python?",
+            "options": {"a": "try-catch", "b": "try-except", "c": "if-else", "d": "for-else"},
+            "answer": "b"
+        },
+        {
+            "question": "What keyword is used to define a class?",
+            "options": {"a": "object", "b": "class", "c": "define", "d": "type"},
+            "answer": "b"
+        },
+        {
+            "question": "Which of the following can be used to stop a loop?",
+            "options": {"a": "stop", "b": "return", "c": "break", "d": "exit"},
+            "answer": "c"
+        },
+        {
+            "question": "What will be the result of 3 < 5 < 10?",
+            "options": {"a": "True", "b": "False", "c": "Syntax Error", "d": "None"},
+            "answer": "a"
+        },
+        {
+            "question": "Which of these methods checks if all characters are digits?",
+            "options": {"a": "isalpha()", "b": "isdigit()", "c": "isnumeric()", "d": "isalnum()"},
+            "answer": "b"
+        },
+        {
+            "question": "What is the result of [1, 2] * 2?",
+            "options": {"a": "[2, 4]", "b": "[1, 2, 1, 2]", "c": "[1, 2, 2]", "d": "Error"},
+            "answer": "b"
+        },
+        {
+            "question": "How do you access the first element of a list named data?",
+            "options": {"a": "data[1]", "b": "data.get(0)", "c": "data[0]", "d": "data.first()"},
+            "answer": "c"
+        },
+        {
+            "question": "What will be the output of bool([])?",
+            "options": {"a": "True", "b": "False", "c": "None", "d": "Error"},
+            "answer": "b"
+        },
+        {
+            "question": "What does a function return by default if there is no return statement?",
+            "options": {"a": "None", "b": "0", "c": "Error", "d": "False"},
+            "answer": "a"
+        }
+    ]
+
+def run_quiz(questions):
+    score = 0
+    for idx, q in enumerate(questions, 1):
+        print(f"\nQuestion {idx}: {q['question']}")
+        for opt, text in q["options"].items():
+            print(f"  {opt}) {text}")
+        ans = input("Your answer (a/b/c/d): ").strip().lower()
+        if ans == q["answer"]:
+            print("✅ Correct!")
+            score += 1
+        else:
+            correct = q["answer"]
+            print(f"❌ Wrong. Correct: {correct}) {q['options'][correct]}")
+    return score
+
+def main():
+    print(" Welcome to the Python Interview Prep Quiz!")
+    questions = get_questions()
+    score = run_quiz(questions)
+    print(f"\n Final Score: {score} / {len(questions)}")
+    if score >= 15:
+        print(" Excellent! You’re ready for the interview.")
+    elif score >= 10:
+        print(" Good! A little more revision will help.")
+    else:
+        print(" Keep practicing. You’re on your way!")
+
+if __name__ == "__main__":
+    main()
